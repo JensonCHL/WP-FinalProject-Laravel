@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\ForumThread;
+
+
+class ForumController extends Controller
+{
+    public function index()
+    {
+        $threads = ForumThread::orderBy('created_at', 'desc')->get();
+        return view('forum.index', compact('threads'));
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'text' => 'required|string',
+        ]);
+
+        ForumThread::create([
+            'username' => $request->username,
+            'title' => $request->title,
+            'text' => $request->text,
+            'replies_count' => 0,
+            'likes_count' => 0,
+        ]);
+
+        return redirect()->route('forum.index')->with('success', 'Thread created successfully!');
+    }
+}
