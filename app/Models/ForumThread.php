@@ -18,4 +18,8 @@ class ForumThread extends Model
         'replies_count',
         'likes_count',
     ];
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

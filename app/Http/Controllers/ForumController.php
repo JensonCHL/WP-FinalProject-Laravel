@@ -31,4 +31,13 @@ class ForumController extends Controller
 
         return redirect()->route('forum.index')->with('success', 'Thread created successfully!');
     }
+    // public function like($id)
+    // {
+    //     $thread = ForumThread::findOrFail($id);
+    //     $thread->increment('likes_count');
+
+    //     return response()->json([
+    //         'likes_count' => $thread->likes_count,
+    //     ]);
+    // }
 }

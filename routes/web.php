@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ReplyController;
 
 
 /*
@@ -21,5 +22,7 @@ Route::get('/', function () {
 Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
 Route::post('/forum/create', [ForumController::class, 'store'])->name('forum.store');
 Route::post('/forum/like/{id}', [ForumController::class, 'like'])->name('forum.like');
+Route::post('/forum/{id}/reply', [ReplyController::class, 'store'])->name('forum.reply');
+
 
 

@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forum_threads', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('forum_thread_id')->constrained()->onDelete('cascade'); // Link to threads
+            $table->string('username');  // Who replied
+            $table->text('text');  // Reply content
+            $table->timestamps();  // Created at, updated at
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum_threads');
+        Schema::dropIfExists('replies');
     }
 };
