@@ -68,17 +68,16 @@
 
                 <div class="card-body">
                     <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
-                        <!-- User Profile Picture -->
-                        <div class="w-16 h-16 rounded-full overflow-hidden">
-                            <img src="{{ asset('images/profile-placeholder.png') }}" alt="{{ $thread->username }}"
-                                class="w-full h-full object-cover">
-                        </div>
 
                         <!-- Thread Details -->
                         <div style="display: flex; flex-direction: column; gap: 4px;">
                             <!-- Thread Title -->
                             <strong style="font-size: 1.125rem; font-weight: 600;">{{ $thread->title }}</strong>
-
+                            <!-- User Profile Picture -->
+                            <div class="w-16 h-16 rounded-full overflow-hidden">
+                                <img src="{{ asset('images/profile-placeholder.png') }}" alt="Foto Profile{{ $thread->username }}"
+                                    class="w-full h-full object-cover">
+                            </div>
                             <!-- Username and Date -->
                             <small style="color: #6B7280;">by {{ $thread->username }} on
                                 {{ $thread->created_at->format('d M Y H:i') }}</small>
