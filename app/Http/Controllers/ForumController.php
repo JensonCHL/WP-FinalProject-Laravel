@@ -8,11 +8,13 @@ use App\Models\ForumThread;
 
 class ForumController extends Controller
 {
+    // Get Forum Thread
     public function index()
     {
         $threads = ForumThread::orderBy('created_at', 'desc')->get();
         return view('forum.index', compact('threads'));
     }
+    // Submit forum thread
     public function store(Request $request)
     {
         $request->validate([

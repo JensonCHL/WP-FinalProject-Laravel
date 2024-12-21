@@ -12,8 +12,13 @@
 
 <body>
     <div class="container mt-5">
-
-        <!-- Search Bar -->
+        @auth
+            <span class="text-white">Hello, {{ Auth::user()->name }}</span>
+            <span>Hello</span>
+        @else
+            <span class="text-black">Hello, Guest</span>
+        @endauth
+         <!-- Search Bar -->
         <form method="GET" action="{{ route('forum.index') }}" class="mb-4"
             style="border: 1px solid #058789; padding: 8px; border-radius: 8px;">
             <input type="text" name="search" placeholder="Search threads..." class="form-control"
@@ -75,8 +80,8 @@
                             <strong style="font-size: 1.125rem; font-weight: 600;">{{ $thread->title }}</strong>
                             <!-- User Profile Picture -->
                             <div class="w-16 h-16 rounded-full overflow-hidden">
-                                <img src="{{ asset('images/profile-placeholder.png') }}" alt="Foto Profile{{ $thread->username }}"
-                                    class="w-full h-full object-cover">
+                                <img src="{{ asset('images/profile-placeholder.png') }}"
+                                    alt="Foto Profile{{ $thread->username }}" class="w-full h-full object-cover">
                             </div>
                             <!-- Username and Date -->
                             <small style="color: #6B7280;">by {{ $thread->username }} on
